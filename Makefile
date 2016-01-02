@@ -1,5 +1,7 @@
 TMP_DATA ?= /tmp/fiytwp.org-dns.data
 
+all: data.cdb
+
 .PHONY: $(TMP_DATA)
 $(TMP_DATA):
 	@curl --silent https://raw.githubusercontent.com/dgholz/fiytwp.org-dns/master/data > $@
