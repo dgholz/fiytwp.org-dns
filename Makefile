@@ -2,7 +2,7 @@ TMP_DATA ?= /tmp/fiytwp.org-dns.data
 
 .PHONY: $(TMP_DATA)
 $(TMP_DATA):
-	@git archive --remote=https://github.com/dgholz/fiytwp.org-dns.git --format=tar HEAD data | tar --extract --to-stdout > $@
+	@curl --silent https://raw.githubusercontent.com/dgholz/fiytwp.org-dns/master/data > $@
 
 data: $(TMP_DATA)
 	@cmp --silent $@ $< || cp $< $@
