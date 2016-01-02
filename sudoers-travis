@@ -1,0 +1,2 @@
+travis ALL = NOPASSWD: /usr/bin/make --directory /etc/tinydns/root
+Defaults:travis !requiretty
