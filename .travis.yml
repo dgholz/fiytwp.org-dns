@@ -3,7 +3,8 @@ install: true
 branches:
   only: master
 after_success:
-- grep '^\.' data | cut -f2 -d: | sort -u | xargs --no-run-if-empty --max-lines=1 --replace=% ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET %
+- |-
+  grep '^\.' data | cut -f2 -d: | sort -u | xargs --no-run-if-empty --max-lines=1 --replace=% ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET %
 before_install:
 - openssl aes-256-cbc -K $encrypted_aa75ac26308c_key -iv $encrypted_aa75ac26308c_iv
   -in .ssh/id_rsa.enc -out .ssh/id_rsa -d
