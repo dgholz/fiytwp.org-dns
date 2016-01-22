@@ -1,6 +1,5 @@
 language: bash
 sudo: false
-install: true
 branches:
   only: master
 
@@ -13,6 +12,10 @@ before_install:
     echo no changes to DNS records
     exit
   }
+- apt-get install tinydns
+
+install:
+- tinydns-data
 
 after_success:
 - openssl aes-256-cbc -K $encrypted_aa75ac26308c_key -iv $encrypted_aa75ac26308c_iv
