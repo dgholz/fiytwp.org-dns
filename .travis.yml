@@ -6,7 +6,7 @@ branches:
 before_install:
 - |-
   if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    TRAVIS_COMMIT_RANGE="FETCH_HEAD...$TRAVIS_BRANCH"
+    TRAVIS_COMMIT_RANGE="FETCH_HEAD...$(git merge-base FETCH_HEAD $TRAVIS_BRANCH)"
   fi
   git diff --name-only $TRAVIS_COMMIT_RANGE | grep --quiet '^data$' || {
     echo no changes to DNS records
